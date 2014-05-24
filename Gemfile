@@ -7,7 +7,17 @@ gem 'rails', '4.0.4'
 gem 'protected_attributes'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use Ruby debugger
+group :development, :test do
+	gem 'sqlite3'
+	gem 'debugger'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
 
 # Use Haml for templates
 gem 'haml'
@@ -47,7 +57,4 @@ end
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-# Use Ruby debugger
-group :development, :test do
-	gem 'debugger'
-end
+
