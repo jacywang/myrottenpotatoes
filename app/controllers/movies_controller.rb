@@ -6,7 +6,7 @@ class MoviesController < ApplicationController
 			params[:sort].nil? ? @movies=Movie.all : @movies=Movie.find(:all, :order=>params[:sort]) 
 		else
 			@checked = params[:ratings].keys
-			@movies=Movie.where(:rating => params[:ratings].keys)
+			@movies=Movie.where(:rating => params[:ratings].keys).order(params[:sort])
 		end
 
 		if params[:sort] == 'title'
@@ -14,6 +14,13 @@ class MoviesController < ApplicationController
 		elsif params[:sort] == 'release_date'
 			@release_date_hilite ='hilite'
 		end
+
+		session[:sort] = params[:sort] unless params[:sort].nil?
+    	session[:ratings] = params[:ratings] unless params[:ratings].nil?
+    	if !session[:ratings].nil? && ( params[:ratings].nil? || params[:sort].nil? )
+    		flash.keep if !flash.nil?
+      		redirect_to :action => :index, :sort => session[:sort] || "", :ratings => session[:ratings] || ""
+    	end
 		
 	end
 	def show
