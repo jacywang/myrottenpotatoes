@@ -11,6 +11,11 @@ gem 'protected_attributes'
 group :development, :test do
 	gem 'sqlite3'
 	gem 'debugger'
+	gem 'cucumber-rails'
+	gem 'cucumber-rails-training-wheels'
+	gem 'database_cleaner'
+	gem 'capybara'
+	gem 'launchy'
 end
 
 group :production do
@@ -47,6 +52,8 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
