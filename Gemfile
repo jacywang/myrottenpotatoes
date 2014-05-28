@@ -11,11 +11,6 @@ gem 'protected_attributes'
 group :development, :test do
 	gem 'sqlite3'
 	gem 'debugger'
-	gem 'cucumber-rails'
-	gem 'cucumber-rails-training-wheels'
-	gem 'database_cleaner'
-	gem 'capybara'
-	gem 'launchy'
 end
 
 group :production do
@@ -53,6 +48,13 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :test, :development do 
+	gem 'cucumber-rails'
+	gem 'cucumber-rails-training-wheels'
+	gem 'database_cleaner'
+	gem 'capybara'
+	gem 'launchy'
+end
 
 
 # Use ActiveModel has_secure_password
